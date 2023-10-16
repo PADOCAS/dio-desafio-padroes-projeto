@@ -4,6 +4,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import one.dio.labpadroesprojetospring.handler.BusinessException;
 import one.dio.labpadroesprojetospring.model.Cliente;
 import one.dio.labpadroesprojetospring.model.Endereco;
 import one.dio.labpadroesprojetospring.repository.ClienteRepository;
@@ -45,7 +46,11 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente buscarPorId(Long id) {
         // Buscar Cliente por ID.
         Optional<Cliente> cliente = clienteRepository.findById(id);
-        return cliente == null ? null : cliente.get();
+        if (cliente.isPresent()) {
+            return cliente.get();
+        } else {
+            throw new BusinessException("Nenhum cliente com ID: " + id + " encontrado.");
+        }
     }
 
     @Override
@@ -66,7 +71,13 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void deletar(Long id) {
         // Deletar Cliente por ID.
-        clienteRepository.deleteById(id);
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+
+        if (cliente.isPresent()) {
+            clienteRepository.deleteById(id);
+        } else {
+            throw new BusinessException("Nenhum cliente com ID: " + id + " encontrado.");
+        }
     }
 
     private void salvarClienteComCep(Cliente cliente) {
