@@ -16,7 +16,7 @@ public class Cliente {
     private String nome;
 
     @ManyToOne
-    private String endereco;
+    private Endereco endereco;
 
     public Cliente() {
     }
@@ -37,11 +37,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
@@ -72,7 +72,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [id=" + id + ", nome=" + nome + ", endereco=" + endereco + "]";
+        return "Cliente [id=" + id + ", nome=" + nome + "]";
     }
 
 }

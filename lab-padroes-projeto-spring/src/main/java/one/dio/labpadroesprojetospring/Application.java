@@ -1,4 +1,4 @@
-package one.dio.labpadroesprojetospring.service;
+package one.dio.labpadroesprojetospring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
