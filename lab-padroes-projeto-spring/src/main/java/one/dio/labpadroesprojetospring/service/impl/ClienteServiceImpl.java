@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import one.dio.labpadroesprojetospring.handler.BusinessException;
+import one.dio.labpadroesprojetospring.handler.CampoRequeridoException;
 import one.dio.labpadroesprojetospring.model.Cliente;
 import one.dio.labpadroesprojetospring.model.Endereco;
 import one.dio.labpadroesprojetospring.repository.ClienteRepository;
@@ -93,6 +94,14 @@ public class ClienteServiceImpl implements ClienteService {
                 enderecoRepository.save(novoEndereco);
                 return novoEndereco;
             });
+
+            if (cliente.getNome() == null) {
+                throw new CampoRequeridoException("nome");
+            }
+
+            if (cliente.getDataNascimento() == null) {
+                throw new CampoRequeridoException("dataNascimento");
+            }
 
             cliente.setEndereco(endereco);
         }

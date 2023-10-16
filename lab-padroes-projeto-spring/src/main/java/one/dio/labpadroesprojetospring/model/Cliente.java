@@ -1,5 +1,8 @@
 package one.dio.labpadroesprojetospring.model;
 
+import java.util.Date;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +16,11 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(length = 50, nullable = false)
     private String nome;
+
+    @Column(name = "data_nascimento", nullable = false)
+    private Date dataNascimento;
 
     @ManyToOne
     private Endereco endereco;
@@ -45,6 +52,14 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -72,7 +87,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [id=" + id + ", nome=" + nome + "]";
+        return "Cliente [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + "]";
     }
 
 }
