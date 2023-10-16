@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import one.dio.labpadroesprojetospring.handler.BusinessException;
 import one.dio.labpadroesprojetospring.model.Cliente;
 import one.dio.labpadroesprojetospring.service.ClienteService;
 
